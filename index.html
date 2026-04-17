@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weté — محطات الوقود</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ===== SIDEBAR MENU ===== -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+<aside class="sidebar" id="sidebar">
+  <button class="sidebar-close" onclick="closeSidebar()">✕</button>
+  <div class="sidebar-logo">Weté</div>
+
+  <nav class="sidebar-nav">
+    <div class="sidebar-section">
+      <h3>📋 عن الموقع</h3>
+      <p>Weté هو منصة رقمية لطلب الوقود من محطات موريتانية معتمدة. اطلب، ادفع، واستقبل الوقود في راحة تامة.</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>❓ أسئلة شائعة</h3>
+      <div class="faq-item">
+        <strong>كيف أطلب الوقود؟</strong>
+        <p>اختر المحطة، حدد النوع والكمية، ثم ادفع عبر بنكك المفضل.</p>
+      </div>
+      <div class="faq-item">
+        <strong>هل الدفع آمن؟</strong>
+        <p>نعم، جميع المعاملات مشفرة ومؤمنة عبر البنوك الموريتانية المعتمدة.</p>
+      </div>
+      <div class="faq-item">
+        <strong>هل يمكنني الطلب بدون تسجيل؟</strong>
+        <p>يمكنك التصفح بحرية، لكن لتقديم طلب يجب تسجيل الدخول.</p>
+      </div>
+      <div class="faq-item">
+        <strong>ما هي أوقات التسليم؟</strong>
+        <p>تعمل المحطات من 06:00 صباحاً حتى 22:00 مساءً.</p>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>📞 تواصل معنا</h3>
+      <a href="https://wa.me/22200000000" class="contact-btn whatsapp" target="_blank">
+        <span>💬</span> واتساب
+      </a>
+      <a href="tel:+22200000000" class="contact-btn phone">
+        <span>📱</span> +222 00 00 00 00
+      </a>
+      <a href="mailto:contact@wete.mr" class="contact-btn email">
+        <span>✉️</span> contact@wete.mr
+      </a>
+    </div>
+  </nav>
+</aside>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <!-- زر القائمة (يسار) -->
+  <button class="menu-btn" onclick="openSidebar()" aria-label="القائمة">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- شعار الموقع (وسط) -->
+  <!-- ⬇️ يمكن تغيير الشعار: استبدل النص بـ <img src="logo.png" alt="Weté"> -->
+  <div class="header-logo">Weté</div>
+
+  <!-- الملف الشخصي (يمين) -->
+  <div class="profile-area" id="profileArea">
+    <div class="profile-btn" id="profileBtn" onclick="toggleProfileMenu()">
+      <div class="avatar" id="avatarDisplay">👤</div>
+      <span id="profileName">دخول</span>
+    </div>
+    <div class="profile-menu" id="profileMenu">
+      <div id="profileMenuContent"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-car">
+    <!-- ⬇️ يمكن تغيير صورة السيارة بتعديل background-image في CSS أو وضع صورة هنا -->
+    <div class="car-visual">
+      <svg viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg" class="car-svg">
+        <defs>
+          <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FF6B35"/>
+            <stop offset="100%" style="stop-color:#E84545"/>
+          </linearGradient>
+        </defs>
+        <!-- جسم السيارة -->
+        <ellipse cx="210" cy="145" rx="185" ry="22" fill="rgba(0,0,0,0.15)"/>
+        <rect x="30" y="95" width="360" height="55" rx="12" fill="url(#bodyGrad)"/>
+        <!-- سقف -->
+        <path d="M100 95 Q130 45 200 38 Q270 32 320 95Z" fill="#E84545"/>
+        <!-- زجاج أمامي -->
+        <path d="M195 48 Q230 38 300 90 L260 90Z" fill="rgba(180,230,255,0.7)"/>
+        <!-- زجاج خلفي -->
+        <path d="M110 90 Q130 55 185 48 L180 90Z" fill="rgba(180,230,255,0.6)"/>
+        <!-- إطارات -->
+        <circle cx="100" cy="150" r="26" fill="#222"/>
+        <circle cx="100" cy="150" r="16" fill="#555"/>
+        <circle cx="320" cy="150" r="26" fill="#222"/>
+        <circle cx="320" cy="150" r="16" fill="#555"/>
+        <!-- مصابيح -->
+        <rect x="32" y="108" width="28" height="14" rx="4" fill="#FFD700"/>
+        <rect x="362" y="108" width="18" height="10" rx="3" fill="#FF4444"/>
+      </svg>
+      <div class="hero-brand-text">weté</div>
+    </div>
+  </div>
+
+  <!-- شريط البحث -->
+  <div class="search-bar-wrap">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="ابحث عن محطة وقود..." oninput="filterStations()"/>
+      <button class="search-clear" onclick="clearSearch()">✕</button>
+    </div>
+    <div class="search-filters">
+      <button class="filter-chip active" onclick="filterByType('all', this)">الكل</button>
+      <button class="filter-chip" onclick="filterByType('gasoil', this)">🛢️ غازوال</button>
+      <button class="filter-chip" onclick="filterByType('essence', this)">⛽ إسنس</button>
+      <button class="filter-chip" onclick="filterByType('both', this)">✅ كلاهما</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATIONS GRID ===== -->
+<main class="stations-container">
+  <div class="section-title">
+    <h2>محطات الوقود <span id="stationCount"></span></h2>
+    <p>اختر محطتك وابدأ الطلب</p>
+  </div>
+
+  <div class="stations-grid" id="stationsGrid">
+    <!-- يتم إنشاؤها بواسطة JavaScript من بيانات stations.js -->
+  </div>
+</main>
+
+<!-- ===== ORDER MODAL ===== -->
+<div class="modal-overlay" id="orderModal" onclick="closeOrderModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('orderModal')">✕</button>
+    <div class="modal-header">
+      <h2 id="modalStationName">اسم المحطة</h2>
+      <p id="modalStationLocation">📍 الموقع</p>
+    </div>
+
+    <div class="fuel-selector" id="fuelSelector"></div>
+
+    <div class="quantity-section">
+      <label>الكمية (لتر)</label>
+      <div class="quantity-control">
+        <button onclick="changeQty(-5)">−</button>
+        <input type="number" id="qtyInput" value="20" min="5" max="1000" step="5" oninput="updateTotal()"/>
+        <button onclick="changeQty(5)">+</button>
+      </div>
+      <div class="quick-qtys">
+        <button onclick="setQty(20)">20L</button>
+        <button onclick="setQty(50)">50L</button>
+        <button onclick="setQty(100)">100L</button>
+        <button onclick="setQty(200)">200L</button>
+      </div>
+    </div>
+
+    <div class="total-display">
+      <span>المبلغ الإجمالي</span>
+      <strong id="totalAmount">0 أوقية</strong>
+    </div>
+
+    <div class="payment-section">
+      <label>طريقة الدفع</label>
+      <div class="banks-grid" id="banksGrid"></div>
+    </div>
+
+    <button class="order-submit-btn" onclick="submitOrder()">
+      🛒 تأكيد الطلب
+    </button>
+  </div>
+</div>
+
+<!-- ===== LOGIN MODAL ===== -->
+<div class="modal-overlay" id="loginModal" onclick="closeOrderModal(event)">
+  <div class="modal-box login-box">
+    <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
+    <div class="modal-header">
+      <h2>🔐 تسجيل الدخول</h2>
+      <p>أدخل بياناتك لمتابعة الطلب</p>
+    </div>
+
+    <div class="form-group">
+      <label>الاسم الكامل</label>
+      <input type="text" id="loginName" placeholder="محمد أحمد"/>
+    </div>
+    <div class="form-group">
+      <label>رقم الهاتف (واتساب) 📱</label>
+      <input type="tel" id="loginPhone" placeholder="22200000000" dir="ltr"/>
+    </div>
+    <div class="form-group">
+      <label>كلمة السر</label>
+      <input type="password" id="loginPassword" placeholder="••••••••"/>
+    </div>
+    <p class="login-note">💡 يُفضل استخدام الرقم المرتبط بواتساب لتلقي تأكيد الطلب</p>
+    <button class="order-submit-btn" onclick="doLogin()">دخول ومتابعة الطلب</button>
+    <p class="register-hint">ليس لديك حساب؟ <a href="#" onclick="showRegister()">إنشاء حساب</a></p>
+  </div>
+</div>
+
+<!-- ===== SUCCESS MODAL ===== -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box success-box">
+    <div class="success-icon">✅</div>
+    <h2>تم الطلب بنجاح!</h2>
+    <p id="successMsg"></p>
+    <button class="order-submit-btn" onclick="closeModal('successModal')">حسناً</button>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-logo">Weté</div>
+  <p>© 2025 Weté — جميع الحقوق محفوظة</p>
+  <div class="footer-links">
+    <a href="#">سياسة الخصوصية</a>
+    <a href="#">شروط الاستخدام</a>
+    <a href="https://wa.me/22200000000">تواصل معنا</a>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
